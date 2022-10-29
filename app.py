@@ -32,9 +32,9 @@ api = Api(app)
 
 jwt = JWT(app, authenticate, identity)
 
-@app.before_first_request
-def create_table():
-    db.create_all()
+# @app.before_first_request
+# def create_table():
+#     db.create_all()
 
 #endpoints for users
 api.add_resource(CreateUser, "/users/create")
@@ -67,6 +67,6 @@ api.add_resource(CourseLists, "/courses/all")
 api.add_resource(DeleteCategory, "/categories/delete")
 
 if __name__ == "__main__":
-    from db import db
-    db.init_app(app)
+    # from db import db
+    # db.init_app(app)
     app.run(port=5000, debug= True)
