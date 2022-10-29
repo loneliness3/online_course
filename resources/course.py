@@ -2,7 +2,7 @@ from models.user import UserModel
 from models.topics import TopicModel
 from models.course import CourseModel
 from flask_restful import Resource, reqparse
-from flask_jwt import jwt_required
+from flask_jwt_extended import jwt_required
 from db import db
 
 class CourseLists(Resource):

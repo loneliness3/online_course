@@ -5,10 +5,10 @@ from flask_uuid import FlaskUUID
 from db import db
 from flask_bcrypt import Bcrypt
 from dotenv import load_dotenv
-from flask_jwt import JWT
+from flask_jwt_extended import JWTManager
 import datetime
 
-from security import authenticate, identity
+# from security import authenticate, identity
 from resources.user import CreateUser
 from resources.course import CreateCourse, CourseLists, GetCourseByInstructorId, UpdateCourse, DeleteCourse, GetCourseByTopic, EnrollCourse
 from resources.category import CreateCategory, DeleteCategory
@@ -37,7 +37,7 @@ flask_uuid.init_app(app)
 
 api = Api(app)
 
-jwt = JWT(app, authenticate, identity)
+jwt = JWTManager(app)
 
 @app.route('/')
 def home():
