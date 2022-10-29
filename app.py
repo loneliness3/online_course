@@ -39,6 +39,9 @@ api = Api(app)
 
 jwt = JWT(app, authenticate, identity)
 
+@app.route('/')
+def home():
+    return {"Hey!": "Welcome"}
 # @app.before_first_request
 # def create_table():
 #     db.create_all()
