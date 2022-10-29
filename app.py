@@ -22,7 +22,14 @@ app.debug = True
 
 app.secret_key=os.getenv("SERECT_KEY")
 app.config["JWT_EXPIRATION_DELTA"]= datetime.timedelta(minutes=120)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DB_URI")
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DB_URI")
+try:
+    prodURI = os.getenv('DB_URL')
+    prodURI = prodURI.replace("postgresql://loneliness:ohdude@localhost:5432/online_db")
+    app.config['SQLALCHEMY_DATABASE_URI'] = prodURI
+
+except:
+    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://loneliness:ohdude@localhost:5432/online_db"
 app.config["SQLALCHEMY_MODIFICATION"] = False
 
 flask_uuid = FlaskUUID()
