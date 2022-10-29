@@ -11,7 +11,7 @@ import datetime
 from security import authenticate, identity
 from resources.user import CreateUser
 from resources.course import CreateCourse, CourseLists, GetCourseByInstructorId, UpdateCourse, DeleteCourse, GetCourseByTopic, EnrollCourse
-from resources.category import CreateCategory, DeleteCatgory
+from resources.category import CreateCategory, DeleteCategory
 
 load_dotenv()
 
@@ -64,9 +64,9 @@ api.add_resource(EnrollCourse, "/courses/enroll")
 api.add_resource(CourseLists, "/courses/all")
 
 #delete category
-api.add_resource(DeleteCatgory, "/catagories/delete")
+api.add_resource(DeleteCategory, "/categories/delete")
 
 if __name__ == "__main__":
     from db import db
     db.init_app(app)
-    app.run(port=5000)
+    app.run(port=5000, debug= True)

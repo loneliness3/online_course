@@ -30,7 +30,7 @@ class CreateCategory(Resource):
             "message": "crated tag successfully"
         }
 
-class DeleteCatgory(Resource):
+class DeleteCategory(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument(
         'name',
@@ -41,16 +41,16 @@ class DeleteCatgory(Resource):
 
     @jwt_required()
     def post(self):
-        data = DeleteCatgory.parser.parse_args()
+        data = DeleteCategory.parser.parse_args()
 
-        old_category = CategoryModel.find_category_by_name['name']
+        old_category = CategoryModel.find_category_by_name(data["name"])
 
-        if old_category is None:
+        if old_category is not None:
             return {"status": 404, "message": "category not found"}, 404
 
         try:
-            CategoryModel.delete_category_by_name(data['name'])
+            CategoryModel.delete_category_by_name(data["name"])
         except:
             return { "status": 500, "message": "an error occured while deleting catagory." }, 500
-        return { "status": 201, "message": "catagory successfully deleted." }, 201
+        return { "status": 201, "message": "category successfully deleted." }, 201
 

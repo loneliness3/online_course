@@ -12,7 +12,7 @@ class CategoryModel(db.Model):
 
     @classmethod
     def find_category_by_name(cls, name):
-        return cls.query.filter_by(name==name).first()
+        return cls.query.filter_by(name=name).first()
 
     @classmethod
     def delete_category_by_name(cls, name):
