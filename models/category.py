@@ -33,6 +33,6 @@ class CategoryModel(db.Model):
         return{'id': self.id, 'name': self.name}
 
     def njson(self):
-        return { 'id': self.id, "name": self.name, "courses": [ course.id for course in self.courses ] }
+        return { 'id': self.id, "name": self.name, "courses": [ course.name for course in self.courses ] }
     
     
