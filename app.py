@@ -20,7 +20,7 @@ app = Flask(__name__)
 bcrypt = Bcrypt(app)
 app.debug = True
 
-app.secret_key=os.getenv("SERECT_KEY")
+app.config["JWT_SECRET_KEY"]= os.getenv("SECRET_KEY")
 app.config["JWT_EXPIRATION_DELTA"]= datetime.timedelta(minutes=120)
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DB_URI")
 try:
