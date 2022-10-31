@@ -21,7 +21,7 @@ class CategoryModel(db.Model):
         return delete_category
 
     @classmethod
-    def get_all_categories(cls, self):
+    def get_all_categories(cls):
         return cls.query.all()
 
     def save_to_db(self):
