@@ -83,8 +83,10 @@ class UserLogin(Resource):
         }
 
 
-
-   
+class UserLists(Resource):
+    def get(self):
+        users = UserModel.get_all()
+        return { "users": [user.json() for user in users]}
 
 
 class StudentEnrollCourse(Resource):

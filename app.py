@@ -9,7 +9,7 @@ from flask_jwt_extended import JWTManager
 import datetime
 
 # from security import authenticate, identity
-from resources.user import CreateUser, UserLogin
+from resources.user import CreateUser, UserLogin, UserLists
 from resources.course import CreateCourse, CourseLists, GetCourseByInstructorId, UpdateCourse, DeleteCourse, GetCourseByTopic, EnrollCourse
 from resources.category import CreateCategory, DeleteCategory,CategoryList
 
@@ -81,3 +81,6 @@ api.add_resource(UserLogin, "/auth/login")
 
 #category_list.all
 api.add_resource(CategoryList, "/categories/all")
+
+#category_user.all
+api.add_resource(UserLists, "/users/all")
