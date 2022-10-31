@@ -57,7 +57,7 @@ class DeleteCategory(Resource):
 class CategoryList(Resource):
 
     def get(self):
-        catagories = CategoryModel.get_all()
+        catagories = CategoryModel.get_all_categories()
         return {
             "categories": [catagory.njson() for catagory in catagories]
         }
