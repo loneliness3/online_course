@@ -54,3 +54,13 @@ class DeleteCategory(Resource):
             return { "status": 500, "message": "an error occured while deleting catagory." }, 500
         return { "status": 201, "message": "category successfully deleted." }, 201
 
+class CategoryList(Resource):
+
+    def get(self):
+        catagories = CategoryModel.get_all()
+        return {
+            "categories": [catagory.njson() for catagory in catagories]
+        }
+
+    
+

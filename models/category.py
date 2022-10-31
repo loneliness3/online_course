@@ -20,9 +20,18 @@ class CategoryModel(db.Model):
         db.session.commit()
         return delete_category
 
+    @classmethod
+    def get_all_categories(cls, self):
+        return cls.query.all()
+
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
 
     def json(self):
         return{'id': self.id, 'name': self.name}
+
+    def njson(self):
+        return { 'id': self.id, "name": self.name, "courses": [ course.id for course in self.courses ] }
+    
+    

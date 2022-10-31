@@ -11,7 +11,7 @@ import datetime
 # from security import authenticate, identity
 from resources.user import CreateUser, UserLogin
 from resources.course import CreateCourse, CourseLists, GetCourseByInstructorId, UpdateCourse, DeleteCourse, GetCourseByTopic, EnrollCourse
-from resources.category import CreateCategory, DeleteCategory
+from resources.category import CreateCategory, DeleteCategory,CategoryList
 
 load_dotenv()
 
@@ -78,3 +78,6 @@ api.add_resource(DeleteCategory, "/categories/delete")
 
 #user_login
 api.add_resource(UserLogin, "/auth/login")
+
+#category_list.all
+api.add_resource(CategoryList, "/categories/all")
