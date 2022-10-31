@@ -6,6 +6,7 @@ class CategoryModel(db.Model):
 
     id = db.Column(db.String(80), default=uuid.uuid4, primary_key=True)
     name = db.Column(db.String(80))
+    courses = db.relationship("CourseModel", lazy="dynamic", backref="catagories")
 
     def __init__(self, name):
         self.name = name
