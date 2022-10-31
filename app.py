@@ -24,12 +24,12 @@ app.config["JWT_SECRET_KEY"]= os.getenv("SECRET_KEY")
 app.config["JWT_EXPIRATION_DELTA"]= datetime.timedelta(minutes=120)
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DB_URI")
 try:
-    prodURI = os.getenv('DB_URL')
-    prodURI = prodURI.replace("postgresql://loneliness:ohdude@localhost:5432/online_db")
+    prodURI = os.getenv('DATABASE_URL')
+    prodURI = prodURI.replace("postgres://", "postgresql://")
     app.config['SQLALCHEMY_DATABASE_URI'] = prodURI
     
 except:
-    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://loneliness:ohdude@localhost:5432/online_db"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///online.db"
 app.config["SQLALCHEMY_MODIFICATION"] = False
 
 flask_uuid = FlaskUUID()
