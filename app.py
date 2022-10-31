@@ -27,7 +27,7 @@ try:
     prodURI = os.getenv('DB_URL')
     prodURI = prodURI.replace("postgresql://loneliness:ohdude@localhost:5432/online_db")
     app.config['SQLALCHEMY_DATABASE_URI'] = prodURI
-
+    
 except:
     app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://loneliness:ohdude@localhost:5432/online_db"
 app.config["SQLALCHEMY_MODIFICATION"] = False
@@ -78,9 +78,3 @@ api.add_resource(DeleteCategory, "/categories/delete")
 
 #user_login
 api.add_resource(UserLogin, "/auth/login")
-
-
-if __name__ == "__main__":
-    from db import db
-    db.init_app(app)
-    app.run(port=5000, debug= True)
